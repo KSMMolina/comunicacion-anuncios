@@ -1,6 +1,0 @@
-@comunicacion_anuncios_HostAddress = http://localhost:5146
-
-GET {{comunicacion_anuncios_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
