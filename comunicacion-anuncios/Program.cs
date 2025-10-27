@@ -1,11 +1,9 @@
-using System.Text;
-using FluentValidation;
-using MediatR;
 using comunicacion_anuncios.Application.Common;
 using comunicacion_anuncios.Application.DTOs;
+using comunicacion_anuncios.Config;
 using comunicacion_anuncios.Infrastructure.Config;
 using comunicacion_anuncios.Middleware;
-using comunicacion_anuncios.Config;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +27,7 @@ builder.Services.AddJwtAuth(builder.Configuration);
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlingMiddleware>(); // captura todas las excepciones
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseSwagger();
 app.UseSwaggerUI();

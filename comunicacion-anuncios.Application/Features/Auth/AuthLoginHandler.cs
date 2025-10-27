@@ -19,24 +19,14 @@ public class AuthLoginHandler : IRequestHandler<AuthLoginRequest, AuthLoginRespo
 
     public async Task<AuthLoginResponse> Handle(AuthLoginRequest request, CancellationToken ct)
     {
-        try
-        {
-            var user = await _users.GetByEmailAsync(request.Email, ct);
-            if (user is null || !user.IsActive || !_passwords.Verify(request.Password, user.PasswordHash))
-                throw new UnauthorizedAccessException("Credenciales inválidas");
+        var user = await _users.GetByEmailAsync(request.Email, ct);
+        if (user is null || !user.IsActive || !_passwords.Verify(request.Password, user.Password))
+            throw new UnauthorizedAccessException("Credenciales inválidas");
 
-            var roleName = user.Role?.Name ?? string.Empty;
-            var token = _jwt.CreateToken(user.Id, user.Email, roleName, user.FullName, out var expires);
+        var roleName = user.Role?.Name ?? string.Empty;
+        var token = _jwt.CreateToken(user.Id, user.Email, user.RoleId, roleName, user.FullName, out var expires);
 
-            var info = new UserInfo(user.Id, user.FullName, user.Email, roleName);
-            return new AuthLoginResponse(token, expires, info);
-        }
-        catch (Exception)
-        {
-            Console.WriteLine("error");
-            throw;
-        }
-        
-        
+        var info = new UserInfo(user.Id, user.FullName, user.Email, roleName);
+        return new AuthLoginResponse(token, expires, info);
     }
 }

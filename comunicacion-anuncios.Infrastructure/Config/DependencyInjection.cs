@@ -19,15 +19,19 @@ public static class DependencyInjection
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUsersReadRepository, UsersReadRepository>();
+        services.AddScoped<IUsersWriteRepository, UsersWriteRepository>();
         services.AddScoped<IAnnouncementsRepository, AnnouncementsRepository>();
         services.AddScoped<IReadConfirmationsRepository, ReadConfirmationsRepository>();
         services.AddScoped<IAttachmentsRepository, AttachmentsRepository>();
+        services.AddScoped<IPasswordHasher, BcryptPasswordHasher>();
 
         services.AddSingleton<IPasswordVerifier, BcryptPasswordVerifier>();
         services.AddSingleton<IJwtTokenService, JwtTokenService>();
+        services.AddTransient<IJwtTokenGenerator, JwtTokenGenerator>();
 
         services.AddHttpContextAccessor();
         services.AddScoped<ICurrentUser, CurrentUser>();
+        services.AddScoped<IRolesReadRepository, RolesReadRepository>();
 
         return services;
     }

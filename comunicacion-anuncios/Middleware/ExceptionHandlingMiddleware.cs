@@ -1,7 +1,6 @@
-using System.Net;
-using System.Text.Json;
 using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
+using comunicacion_anuncios.Application.Common;
 
 namespace comunicacion_anuncios.Middleware;
 
@@ -18,34 +17,28 @@ public class ExceptionHandlingMiddleware
         }
         catch (Exception ex)
         {
-            await WriteProblemAsync(context, ex);
+            await WriteApiErrorAsync(context, ex);
         }
     }
 
-    private static async Task WriteProblemAsync(HttpContext context, Exception ex)
+    private static async Task WriteApiErrorAsync(HttpContext context, Exception ex)
     {
         if (context.Response.HasStarted)
-            return; // No se puede modificar cabeceras si ya comenzó
+            return;
 
-        var (status, type, title, errors) = MapException(ex);
+        var (status, message, errorsSimple, fieldErrors) = MapException(ex);
 
-        var problem = new ProblemDetails
-        {
-            Type = type,
-            Title = title,
-            Status = status,
-            Detail = ex.Message,
-            Instance = context.Request.Path
-        };
-
-        problem.Extensions["traceId"] = context.TraceIdentifier;
-        if (errors is not null) problem.Extensions["errors"] = errors;
+        object envelope;
+        if (fieldErrors is not null)
+            envelope = ApiResponse.FailFields<object>(fieldErrors, message);
+        else
+            envelope = ApiResponse.Fail<object>(errorsSimple, message);
 
         context.Response.Clear();
-        context.Response.ContentType = "application/problem+json";
-        context.Response.StatusCode = status; // corrección: quitar ?? operador
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = status;
 
-        var json = JsonSerializer.Serialize(problem, new JsonSerializerOptions
+        var json = JsonSerializer.Serialize(envelope, new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase
         });
@@ -53,33 +46,34 @@ public class ExceptionHandlingMiddleware
         await context.Response.WriteAsync(json);
     }
 
-    private static (int status, string type, string title, object? errors) MapException(Exception ex) =>
+    private static (int status, string message, IReadOnlyList<string>? errorsSimple, IReadOnlyDictionary<string, string[]>? fieldErrors)
+        MapException(Exception ex) =>
         ex switch
         {
             ValidationException ve => (
                 StatusCodes.Status400BadRequest,
-                "https://tools.ietf.org/html/rfc7231#section-6.5.1",
-                "ValidationFailed",
+                "Errores de validación",
+                null,
                 ve.Errors
-                    .GroupBy(e => e.PropertyName)
-                    .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray())
+                  .GroupBy(e => e.PropertyName)
+                  .ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray())
             ),
             UnauthorizedAccessException => (
                 StatusCodes.Status401Unauthorized,
-                "https://tools.ietf.org/html/rfc7235#section-3.1",
-                "Unauthorized",
+                "No autorizado",
+                new[] { "Credenciales inválidas o faltantes" },
                 null
             ),
             KeyNotFoundException => (
                 StatusCodes.Status404NotFound,
-                "https://tools.ietf.org/html/rfc7231#section-6.5.4",
-                "NotFound",
+                "Recurso no encontrado",
+                new[] { "El recurso solicitado no existe" },
                 null
             ),
             _ => (
                 StatusCodes.Status500InternalServerError,
-                "https://tools.ietf.org/html/rfc7231#section-6.6.1",
-                "ServerError",
+                "Error interno",
+                new[] { "Ha ocurrido un error inesperado" },
                 null
             )
         };

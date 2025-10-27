@@ -12,18 +12,22 @@ public class UsersConfiguration : IEntityTypeConfiguration<User>
         builder.HasKey(x => x.Id);
 
         builder.Property(x => x.Id)
+            .HasColumnName("Id")
             .ValueGeneratedOnAdd()
             .HasDefaultValueSql("NEWSEQUENTIALID()");
 
         builder.Property(x => x.FullName)
+            .HasColumnName("FullName")
             .HasMaxLength(150)
             .IsRequired();
 
         builder.Property(x => x.Email)
+            .HasColumnName("Email")
             .HasMaxLength(256)
             .IsRequired();
 
-        builder.Property(x => x.PasswordHash)
+        builder.Property(x => x.Password)
+            .HasColumnName("Password")
             .HasMaxLength(255)
             .IsRequired();
 
