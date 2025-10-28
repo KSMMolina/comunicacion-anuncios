@@ -1,0 +1,43 @@
+<div class="contact-widget" [class.open]="isOpen()">
+	<button class="contact-toggle" type="button" (click)="toggle()">
+		<span class="icon">💬</span>
+		<span class="label">Contactos</span>
+		@if (unreadTotal()) {
+			<span class="badge">{{ unreadTotal() }}</span>
+		}
+	</button>
+
+	@if (isOpen()) {
+		<section class="contact-panel">
+			<header>
+				<h2>Mensajes</h2>
+				<p>Conversaciones recientes en la comunidad</p>
+			</header>
+			<ul>
+				@for (contact of contacts(); track contact.id) {
+					<li>
+						<button type="button" class="contact-item">
+							<img [src]="contact.avatar" alt="Avatar" />
+							<div class="contact-item__info">
+								<div>
+									<strong>{{ contact.name }}</strong>
+									<span class="role">{{ contact.role }}</span>
+								</div>
+								<p>{{ contact.lastMessage }}</p>
+							</div>
+							<div class="contact-item__status">
+								<span class="status">{{ contact.status }}</span>
+								@if (contact.unread) {
+									<span class="badge">{{ contact.unread }}</span>
+								}
+							</div>
+						</button>
+					</li>
+				}
+			</ul>
+			<footer>
+				<button type="button" class="view-all">Ver todas las conversaciones</button>
+			</footer>
+		</section>
+	}
+</div>

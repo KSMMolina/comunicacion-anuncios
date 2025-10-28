@@ -1,0 +1,180 @@
+<section class="dashboard">
+	<header class="dashboard__header">
+		<div>
+			<h1>Muro de Comunicaciones</h1>
+			<p>Consulta los comunicados, noticias y actividades recientes de la comunidad.</p>
+		</div>
+		<div class="dashboard__actions">
+			<button type="button" class="btn" (click)="toggleComposer()">
+				<span class="icon">✍️</span>
+				Nuevo anuncio
+			</button>
+			<div class="search-box">
+				<span class="icon">🔍</span>
+				<input type="search" placeholder="Buscar por título, etiqueta o contenido" (input)="updateSearch($any($event.target).value)" />
+			</div>
+		</div>
+	</header>
+
+	<div class="dashboard__layout">
+		<aside class="dashboard__filters">
+			<h2>Filtros</h2>
+			<nav class="filter-group">
+				<button type="button" [class.active]="scopeFilter() === 'todos'" (click)="changeScope('todos')">Toda la comunidad</button>
+				<button type="button" [class.active]="scopeFilter() === 'torre'" (click)="changeScope('torre')">Por torre</button>
+				<button type="button" [class.active]="scopeFilter() === 'apartamento'" (click)="changeScope('apartamento')">Por apartamento</button>
+				<button type="button" [class.active]="scopeFilter() === 'rol'" (click)="changeScope('rol')">Por rol</button>
+			</nav>
+
+					@if (currentUser(); as user) {
+						<section class="user-card">
+							<img src="https://i.pravatar.cc/150?img=5" alt="Avatar" />
+							<div>
+								<h3>{{ user.fullname || user.email }}</h3>
+								<p>{{ user.role | titlecase }}</p>
+							</div>
+						</section>
+					}
+		</aside>
+
+		<main class="dashboard__feed">
+			@if (isComposing()) {
+				<article class="composer">
+					<header><h2>Crear nuevo anuncio</h2></header>
+					<form [formGroup]="composeForm" (ngSubmit)="submitDraft()">
+						<input type="text" formControlName="title" placeholder="Título del anuncio" />
+						<textarea formControlName="content" rows="4" placeholder="Comparte novedades, recordatorios o avisos importantes"></textarea>
+						<div class="composer__footer">
+							<div class="composer__chips">
+								<span class="chip">📎 Adjuntar</span>
+								<span class="chip">🏷 Etiquetas</span>
+								<span class="chip">🎯 Público</span>
+							</div>
+							<div class="composer__actions">
+								<button type="button" class="btn btn--ghost" (click)="toggleComposer()">Cancelar</button>
+								<button type="submit" class="btn btn--primary">Publicar</button>
+							</div>
+						</div>
+					</form>
+				</article>
+			}
+
+			@for (post of filteredPosts(); track post.id) {
+				<article class="feed-card">
+					<header class="feed-card__header">
+						<img [src]="post.author.avatar" alt="Avatar" />
+						<div class="header-meta">
+							<div class="header-meta__title">
+								<h3>{{ post.author.name }}</h3>
+								<span class="role">{{ post.author.role }}</span>
+							</div>
+							<div class="header-meta__info">
+								<span>{{ post.audienceLabel }}</span>
+								<span>•</span>
+								<span>{{ post.createdAt | date: 'medium' }}</span>
+							</div>
+						</div>
+						<button type="button" class="icon-button" (click)="share(post.id)">⋮</button>
+					</header>
+
+					<div class="feed-card__body">
+						<h4>{{ post.title }}</h4>
+						<p>{{ post.content }}</p>
+
+						@if (post.attachments?.length) {
+							<div class="attachments">
+								@for (file of post.attachments; track file.url) {
+									<a class="attachment" [href]="file.url" target="_blank">
+										<span class="icon">
+											@switch (file.type) {
+												@case ('image') {🖼}
+												@case ('pdf') {📄}
+												@default {🔗}
+											}
+										</span>
+										<span>{{ file.label || file.url }}</span>
+									</a>
+								}
+							</div>
+						}
+
+						@if (post.tags?.length) {
+							<div class="tags">
+								@for (tag of post.tags; track tag) {
+									<span class="tag">#{{ tag }}</span>
+								}
+							</div>
+						}
+					</div>
+
+					<footer class="feed-card__footer">
+						<div class="reactions">
+							@for (reaction of reactions; track reaction.type) {
+								<button type="button" (click)="reactTo(post.id, reaction.type)">
+									<span>{{ reaction.icon }}</span>
+									<span>{{ reaction.label }}</span>
+								</button>
+							}
+						</div>
+
+						<div class="metrics">
+							<span>👍 {{ post.metrics.likes }}</span>
+							<span>🎉 {{ post.metrics.celebrates }}</span>
+							<span>❗ {{ post.metrics.important }}</span>
+							<span>💬 {{ post.metrics.comments }}</span>
+						</div>
+					</footer>
+
+					@if (post.comments.length) {
+						<section class="comments">
+							@for (comment of post.comments; track comment.id) {
+								<article class="comment">
+									<img [src]="comment.author.avatar" alt="Avatar" />
+									<div>
+										<header>
+											<strong>{{ comment.author.name }}</strong>
+											<span>{{ comment.createdAt | date: 'short' }}</span>
+										</header>
+										<p>{{ comment.message }}</p>
+									</div>
+								</article>
+							}
+							<button type="button" class="btn btn--ghost" (click)="commentOn(post.id)">Ver todos los comentarios</button>
+						</section>
+					}
+
+					<form class="comment-box" (submit)="$event.preventDefault(); commentOn(post.id)">
+						<input type="text" placeholder="Escribe un comentario" />
+						<button type="submit">Publicar</button>
+					</form>
+				</article>
+			}
+
+			@if (!filteredPosts().length) {
+				<div class="empty-state">
+					<span>📰</span>
+					<p>No hay anuncios para mostrar con los filtros actuales.</p>
+				</div>
+			}
+		</main>
+
+		<aside class="dashboard__sidebar">
+			<section class="summary">
+				<h2>Resumen semanal</h2>
+				<ul>
+					<li><strong>12</strong> anuncios publicados</li>
+					<li><strong>87</strong> confirmaciones de lectura</li>
+					<li><strong>24</strong> comentarios nuevos</li>
+				</ul>
+			</section>
+
+			<section class="quick-links">
+				<h2>Accesos directos</h2>
+				<a href="#">Ver calendario de eventos</a>
+				<a href="#">Documentos importantes</a>
+				<a href="#">Estadísticas de comunicación</a>
+			</section>
+		</aside>
+	</div>
+</section>
+<app-contacts></app-contacts>

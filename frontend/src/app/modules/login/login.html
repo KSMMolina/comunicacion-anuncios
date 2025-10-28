@@ -1,0 +1,33 @@
+<div class="login-wrapper">
+	<div class="login-card" [class.loading]="loading()">
+		<h1>Iniciar sesión</h1>
+		<p class="subtitle">Accede al módulo de comunicación interna</p>
+		<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+			<div class="form-group" [class.invalid]="fieldInvalid('email')">
+				<label for="email">Correo electrónico</label>
+				<input id="email" type="email" placeholder="ejemplo@correo.com" formControlName="email" autocomplete="email" />
+				@if (fieldInvalid('email')) {
+					<small>
+						{{ form.get('email')?.errors?.['required'] ? 'El correo es obligatorio' : 'Formato de correo inválido' }}
+					</small>
+				}
+			</div>
+			<div class="form-group" [class.invalid]="fieldInvalid('password')">
+				<label for="password">Contraseña</label>
+				<input id="password" type="password" placeholder="••••••" formControlName="password" autocomplete="current-password" />
+				@if (fieldInvalid('password')) {
+					<small>
+						{{ form.get('password')?.errors?.['required'] ? 'La contraseña es obligatoria' : 'Mínimo 6 caracteres' }}
+					</small>
+				}
+			</div>
+			<button type="submit" [disabled]="loading() || form.invalid" class="btn-primary">
+				@if (!loading()) {<span>Entrar</span>} @else {<span class="spinner"></span>}
+			</button>
+			@if (errorMessage()) {
+				<div class="error">{{ errorMessage() }}</div>
+			}
+		</form>
+		<footer class="login-footer">&copy; {{ year }} Comunicación Interna</footer>
+	</div>
+</div>
