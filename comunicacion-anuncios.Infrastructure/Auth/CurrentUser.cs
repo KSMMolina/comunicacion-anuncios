@@ -14,9 +14,17 @@ public class CurrentUser : ICurrentUser
 
     public Guid GetUserId()
     {
-        var sub = User.FindFirst(JwtRegisteredClaimNames.Sub).Value;
-        if (Guid.TryParse(sub, out var id)) return id;
-        throw new InvalidOperationException("Claim sub inválida");
+        var raw =
+            User.FindFirst(ClaimTypes.NameIdentifier)?.Value ??
+            User.FindFirst("oid")?.Value ??
+            User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value;
+
+        if (string.IsNullOrWhiteSpace(raw))
+            throw new InvalidOperationException("Claim de identificador de usuario no encontrada");
+
+        if (Guid.TryParse(raw, out var id)) return id;
+
+        throw new InvalidOperationException($"Claim de identificador inválida: {raw}");
     }
 
     public string GetUserEmail()

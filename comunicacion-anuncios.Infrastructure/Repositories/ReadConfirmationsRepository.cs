@@ -15,6 +15,16 @@ public class ReadConfirmationsRepository : IReadConfirmationsRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(rc => rc.AnnouncementId == announcementId && rc.UserId == userId, ct);
 
+    public async Task<IReadOnlyList<ReadConfirmation>> GetByAnnouncementIdAsync(Guid announcementId, CancellationToken ct)
+    {
+        return await _ctx.ReadConfirmations
+            .AsNoTracking()
+            .Include(rc => rc.User)
+            .Where(rc => rc.AnnouncementId == announcementId)
+            .OrderByDescending(rc => rc.ReadAt)
+            .ToListAsync(ct);
+    }
+
     public async Task AddAsync(ReadConfirmation entity, CancellationToken ct)
     {
         await _ctx.ReadConfirmations.AddAsync(entity, ct);
