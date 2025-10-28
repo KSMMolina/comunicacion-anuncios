@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7AE85213-0990-43B5-B379-7AC715564B08}|comunicacion-anuncios.Application\\comunicacion_anuncios.Application.csproj|c:\\users\\familia\\documents\\proyectos\\comunicacion-anuncios\\comunicacion-anuncios.application\\features\\announcements\\getannouncementreadershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AE85213-0990-43B5-B379-7AC715564B08}|comunicacion-anuncios.Application\\comunicacion_anuncios.Application.csproj|solutionrelative:comunicacion-anuncios.application\\features\\announcements\\getannouncementreadershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3BE37B4-8C96-4C06-A384-25F98944E327}|comunicacion-anuncios.Infrastructure\\comunicacion_anuncios.Infrastructure.csproj|c:\\users\\familia\\documents\\proyectos\\comunicacion-anuncios\\comunicacion-anuncios.infrastructure\\repositories\\readconfirmationsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3BE37B4-8C96-4C06-A384-25F98944E327}|comunicacion-anuncios.Infrastructure\\comunicacion_anuncios.Infrastructure.csproj|solutionrelative:comunicacion-anuncios.infrastructure\\repositories\\readconfirmationsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AE85213-0990-43B5-B379-7AC715564B08}|comunicacion-anuncios.Application\\comunicacion_anuncios.Application.csproj|c:\\users\\familia\\documents\\proyectos\\comunicacion-anuncios\\comunicacion-anuncios.application\\abstractions\\ireadconfirmationsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AE85213-0990-43B5-B379-7AC715564B08}|comunicacion-anuncios.Application\\comunicacion_anuncios.Application.csproj|solutionrelative:comunicacion-anuncios.application\\abstractions\\ireadconfirmationsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B22451B3-4866-4BD4-ADD3-A89C2B2A7FAD}|comunicacion-anuncios\\comunicacion_anuncios.Presentation.csproj|c:\\users\\familia\\documents\\proyectos\\comunicacion-anuncios\\comunicacion-anuncios\\controllers\\announcementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B22451B3-4866-4BD4-ADD3-A89C2B2A7FAD}|comunicacion-anuncios\\comunicacion_anuncios.Presentation.csproj|solutionrelative:comunicacion-anuncios\\controllers\\announcementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7AE85213-0990-43B5-B379-7AC715564B08}|comunicacion-anuncios.Application\\comunicacion_anuncios.Application.csproj|c:\\users\\familia\\documents\\proyectos\\comunicacion-anuncios\\comunicacion-anuncios.application\\features\\announcements\\confirmreadhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7AE85213-0990-43B5-B379-7AC715564B08}|comunicacion-anuncios.Application\\comunicacion_anuncios.Application.csproj|solutionrelative:comunicacion-anuncios.application\\features\\announcements\\confirmreadhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E3BE37B4-8C96-4C06-A384-25F98944E327}|comunicacion-anuncios.Infrastructure\\comunicacion_anuncios.Infrastructure.csproj|c:\\users\\familia\\documents\\proyectos\\comunicacion-anuncios\\comunicacion-anuncios.infrastructure\\auth\\currentuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3BE37B4-8C96-4C06-A384-25F98944E327}|comunicacion-anuncios.Infrastructure\\comunicacion_anuncios.Infrastructure.csproj|solutionrelative:comunicacion-anuncios.infrastructure\\auth\\currentuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B22451B3-4866-4BD4-ADD3-A89C2B2A7FAD}|comunicacion-anuncios\\comunicacion_anuncios.Presentation.csproj|c:\\users\\familia\\documents\\proyectos\\comunicacion-anuncios\\comunicacion-anuncios\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B22451B3-4866-4BD4-ADD3-A89C2B2A7FAD}|comunicacion-anuncios\\comunicacion_anuncios.Presentation.csproj|solutionrelative:comunicacion-anuncios\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReadConfirmationsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Infrastructure\\Repositories\\ReadConfirmationsRepository.cs",
+              "RelativeDocumentMoniker": "comunicacion-anuncios.Infrastructure\\Repositories\\ReadConfirmationsRepository.cs",
+              "ToolTip": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Infrastructure\\Repositories\\ReadConfirmationsRepository.cs",
+              "RelativeToolTip": "comunicacion-anuncios.Infrastructure\\Repositories\\ReadConfirmationsRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAawAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T00:37:06.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IReadConfirmationsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Application\\Abstractions\\IReadConfirmationsRepository.cs",
+              "RelativeDocumentMoniker": "comunicacion-anuncios.Application\\Abstractions\\IReadConfirmationsRepository.cs",
+              "ToolTip": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Application\\Abstractions\\IReadConfirmationsRepository.cs",
+              "RelativeToolTip": "comunicacion-anuncios.Application\\Abstractions\\IReadConfirmationsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T00:36:59.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetAnnouncementReadersHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Application\\Features\\Announcements\\GetAnnouncementReadersHandler.cs",
+              "RelativeDocumentMoniker": "comunicacion-anuncios.Application\\Features\\Announcements\\GetAnnouncementReadersHandler.cs",
+              "ToolTip": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Application\\Features\\Announcements\\GetAnnouncementReadersHandler.cs",
+              "RelativeToolTip": "comunicacion-anuncios.Application\\Features\\Announcements\\GetAnnouncementReadersHandler.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T00:33:43.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CurrentUser.cs",
+              "DocumentMoniker": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Infrastructure\\Auth\\CurrentUser.cs",
+              "RelativeDocumentMoniker": "comunicacion-anuncios.Infrastructure\\Auth\\CurrentUser.cs",
+              "ToolTip": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Infrastructure\\Auth\\CurrentUser.cs",
+              "RelativeToolTip": "comunicacion-anuncios.Infrastructure\\Auth\\CurrentUser.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T00:21:55.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConfirmReadHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Application\\Features\\Announcements\\ConfirmReadHandler.cs",
+              "RelativeDocumentMoniker": "comunicacion-anuncios.Application\\Features\\Announcements\\ConfirmReadHandler.cs",
+              "ToolTip": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios.Application\\Features\\Announcements\\ConfirmReadHandler.cs",
+              "RelativeToolTip": "comunicacion-anuncios.Application\\Features\\Announcements\\ConfirmReadHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T00:18:39.325Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AnnouncementsController.cs",
+              "DocumentMoniker": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios\\Controllers\\AnnouncementsController.cs",
+              "RelativeDocumentMoniker": "comunicacion-anuncios\\Controllers\\AnnouncementsController.cs",
+              "ToolTip": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios\\Controllers\\AnnouncementsController.cs",
+              "RelativeToolTip": "comunicacion-anuncios\\Controllers\\AnnouncementsController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwFQAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T00:18:02.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios\\appsettings.json",
+              "RelativeDocumentMoniker": "comunicacion-anuncios\\appsettings.json",
+              "ToolTip": "C:\\Users\\Familia\\Documents\\Proyectos\\comunicacion-anuncios\\comunicacion-anuncios\\appsettings.json",
+              "RelativeToolTip": "comunicacion-anuncios\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAB6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-28T00:09:18.718Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
