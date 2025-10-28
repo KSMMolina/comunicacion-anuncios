@@ -1,0 +1,92 @@
+# ===== SO (Windows/macOS/Linux)
+Thumbs.db
+.DS_Store
+*.swp
+*.tmp
+
+# ===== Visual Studio / .NET artefactos
+.vs/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+artifacts/
+TestResults/
+*.user
+*.suo
+*.rsuser
+*.ipch
+*.opendb
+*.dbmdl
+*.jfm
+*.tlog
+*.lastcodeanalysissucceeded
+*.vsp
+*.vspx
+*.coverage
+*.coveragexml
+*.trx
+
+# Cachés VS (lo que ves en tus screenshots)
+*.db
+*.db-shm
+*.db-wal
+*.vsidx
+*.v2
+*.bin
+*.cache
+DocumentLayout.json
+DocumentLayout.backup.json
+*.suo
+*.ide
+
+# ReSharper / Rider / JetBrains
+.idea/
+*.DotSettings.user
+_ReSharper*/
+_ReSharper.Caches/
+
+# NuGet
+packages/
+project.lock.json
+project.fragment.lock.json
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+
+# Entity Framework Core
+# (Conserva las migraciones en control de versiones)
+# Migrations/**  <-- NO ignorar
+
+# Secrets / configuración local
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+# Mantén appsettings.json y appsettings.Production.json si NO contienen secretos
+
+# ===== VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+.history/
+
+# ===== Node / Angular
+node_modules/
+dist/
+.tmp/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# Mantén lockfiles (mejor reproducibilidad)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ===== Frontend build output común
+*.map
